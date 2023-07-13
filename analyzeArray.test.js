@@ -7,3 +7,7 @@ test('return an object with averange property', () => {
 test('return an object with min property', () => {
   expect(analyzeArray([1, 8, 3, 4, 2, 6]).min).toBe(1);
 });
+
+test('return an object with max property', () => {
+  expect(analyzeArray([1, 8, 3, 4, 2, 6]).max).toBe(8);
+});
