@@ -15,3 +15,7 @@ test('keeping the same case', () => {
     'Efgfoe uif fbtu xbmm pg uif dbtumf'
   );
 });
+
+test('punctuation', () => {
+  expect(caesarCipher('Hello, how are you?')).toBe('Ifmmp. ipx bsf zpv!');
+});
