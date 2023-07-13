@@ -1,23 +1,26 @@
-const caesarCipher = (text) => {
+const caesarCipher = (text, shift) => {
   const chars = 'abcdefghijklmnopqrstuvwxyz'.split('');
   const punctuation = ',./;:\'"{[}}\\|?!@#$%^&*()-_=+'.split('');
   const ciphered = [];
 
   [...text].forEach((char) => {
-    let index = chars.includes(char.toLowerCase())
+    let currentIndex = chars.includes(char.toLowerCase())
       ? chars.indexOf(char.toLowerCase())
       : punctuation.includes(char)
       ? punctuation.indexOf(char)
       : -1;
 
+    let shiftedIndex =
+      currentIndex + shift > chars.length
+        ? currentIndex + shift - chars.length
+        : currentIndex + shift;
+
     chars.includes(char.toLowerCase())
-      ? index === 25
-        ? ciphered.push(chars[0])
-        : char === char.toUpperCase()
-        ? ciphered.push(chars[index + 1].toUpperCase())
-        : ciphered.push(chars[index + 1])
+      ? char === char.toUpperCase()
+        ? ciphered.push(chars.at(shiftedIndex).toUpperCase())
+        : ciphered.push(chars.at(shiftedIndex))
       : punctuation.includes(char)
-      ? ciphered.push(punctuation[index + 1])
+      ? ciphered.push(punctuation.at(shiftedIndex))
       : ciphered.push(' ');
   });
 
