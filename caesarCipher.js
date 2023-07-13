@@ -3,9 +3,14 @@ const caesarCipher = (text) => {
   const ciphered = [];
 
   [...text].forEach((char) => {
-    chars.indexOf(char) === -1
+    let index = chars.indexOf(char.toLowerCase());
+    index === 25
+      ? ciphered.push(chars[0])
+      : index === -1
       ? ciphered.push(' ')
-      : ciphered.push(chars[chars.indexOf(char) + 1]);
+      : char === char.toUpperCase()
+      ? ciphered.push(chars[index + 1].toUpperCase())
+      : ciphered.push(chars[index + 1]);
   });
 
   return ciphered.join('');
